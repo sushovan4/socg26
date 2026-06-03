@@ -1,0 +1,34 @@
+project:
+  type: default
+  resources:
+    - "assets/*.svg"
+    - "assets/*.js"
+
+format:
+  revealjs:
+    theme: [default, theme.scss]
+    slide-number: c/t
+    progress: false
+    controls: false
+    navigation-mode: vertical
+    transition: slide
+    transition-speed: slow
+    background-transition: none
+    width: 1280
+    height: 800
+    margin: 0
+    min-scale: 0.2
+    max-scale: 2.0
+    center: false
+    hash-type: number
+    history: true
+    html-math-method: katex
+    embed-resources: false
+    code-line-numbers: false
+    highlight-style: breeze
+    fig-align: center
+    incremental: true
+    auto-stretch: false
+    include-after-body:
+      text: |
+        <script src="assets/inject-landmark.js" defer></script>
