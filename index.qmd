@@ -425,15 +425,15 @@ To go from the circle to an arbitrary finite connected metric graph we need two 
 The simplest metric graph is a **tree**. There the two distances already coincide — *provided the sample reaches the leaves.*
 :::
 
-::: {.def-box .fragment data-fragment-index="1" data-title="Equality on trees · Thm 8" style="margin: 0.45rem auto 0.35rem; font-size: 0.88em;"}
+::: {.def-box .fragment data-fragment-index="1" data-title="Equality on trees · Thm 8" style="margin: 0.3rem auto 0.25rem; font-size: 0.86em;"}
 Let $T$ be a finite metric tree, $X \subseteq T$. If the largest gap avoids the leaves — $d_{\mathrm{H}}(T,X) > \vec d_{\mathrm{H}}(\partial T, X)$ — then $\; d_{\mathrm{GH}}(T,X) = d_{\mathrm{H}}(T,X).$
 :::
 
-::: {.plate .fragment data-fragment-index="2" style="max-width: 720px;"}
+::: {.plate .fragment data-fragment-index="2" style="max-width: 648px;"}
 ![](assets/trees-leaf.svg)
 :::
 
-::: {.dispatches .fragment .nonincremental data-fragment-index="3" data-title="Why the leaves need control · Thm 5" style="font-size: 0.77em; padding: 0.35rem 1.2rem 0.28rem; margin: 0.95rem auto 0.2rem;"}
+::: {.dispatches .fragment .nonincremental data-fragment-index="3" data-title="Why the leaves need control · Thm 5" style="font-size: 0.77em; padding: 0.32rem 1.2rem 0.25rem; margin: 0.5rem auto 0.15rem;"}
 - Miss the leaves and it breaks — the **fan** keeps $d_{\mathrm{H}}$ large while $d_{\mathrm{GH}} \to 0$ (near-equal arms interchange), so leaf control is unavoidable.
 :::
 
@@ -450,21 +450,21 @@ Why insist on the leaves? Theorem 5 shows the ratio can be made arbitrarily smal
 
 ## General graphs
 
-::: {.standfirst style="font-size: 0.95em; margin: -0.3rem 0 0.3rem;"}
+::: {.standfirst style="font-size: 0.92em; margin: -0.35rem 0 0.15rem;"}
 The equality reaches *any* finite connected metric graph — under leaf control and a density set by the core — and it becomes a bound you can **compute**.
 :::
 
-::: {.def-box .fragment data-fragment-index="1" data-title="Main theorem · Thm 23" style="margin: 0.5rem auto 0.2rem; font-size: 0.95em;"}
+::: {.def-box .fragment data-fragment-index="1" data-title="Main theorem · Thm 23" style="margin: 0.3rem auto 0.15rem; font-size: 0.9em;"}
 Let $G$ be a finite connected metric graph, $X \subseteq G$. If $\partial G \neq \varnothing$, assume leaf control $d_{\mathrm{H}}(G,X) > \vec d_{\mathrm{H}}(\partial G, X)$. If
 $$ d_{\mathrm{GH}}(G,X) \;<\; \frac{e(G_0)}{16}, $$
 then $\; d_{\mathrm{GH}}(G,X) = d_{\mathrm{H}}(G,X).$
 :::
 
-::: {.fragment data-fragment-index="1" style="text-align: center; font-size: 0.72em; color: var(--sepia); font-style: italic; margin: 0 auto 0.45rem;"}
+::: {.fragment data-fragment-index="1" style="text-align: center; font-size: 0.72em; color: var(--sepia); font-style: italic; margin: 0 auto 0.28rem;"}
 core $G_0$ — the loops, with the hanging trees pruned · $e(G_0)$ — its shortest edge
 :::
 
-::: {.def-box .fragment data-fragment-index="2" data-title="The payoff · a computable lower bound" style="margin: 0.45rem auto 0.35rem; font-size: 0.88em;"}
+::: {.def-box .fragment data-fragment-index="2" data-title="The payoff · a computable lower bound" style="margin: 0.25rem auto 0.2rem; font-size: 0.82em;"}
 For two dense samples $X, Y \subseteq G$, the triangle inequality turns the equality into a lower bound on $d_{\mathrm{GH}}(X, Y)$ — phrased through $d_{\mathrm{H}}(X, Y)$, which is $\mathcal{O}(n^2)$-computable. An otherwise NP-hard distance gains a quantitative, polynomial-time estimate.
 :::
 
