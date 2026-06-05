@@ -57,6 +57,7 @@ The current repo was scaffolded from `~/templates/talk-broadsheet/`. The canonic
 **Title-block injection**
 - The masthead, edition line, wax seal, byline, opening speaker notes, and pull-quote are injected by `assets/inject-landmark.js`. Edit the constants at the top of that file per talk (`ARXIV_URL`, `GAZETTE`, `COAUTHORS`, `EDITION_LINE`, `PULLQUOTE`, `TITLE_NOTES_HTML`, seal initials).
 - A top-level `:::notes` block at the start of the .qmd would create a phantom empty slide 2 — use `TITLE_NOTES_HTML` in the JS instead.
+- ANY body content before the first `#` heading — including an HTML `<!-- ... -->` comment — becomes a phantom empty slide 2. Keep notes-to-self in YAML or after the first heading; never leave a comment block between the `---` front matter and the first `# § ...` divider.
 
 **Cross-references**
 - Remove ALL paper section, equation, theorem, lemma cross-references from user-visible slide text (no "see §2.5", "Thm 3.1", "Eq. (11)", "Paper II", "Lemma I.4"). Keep them in `::: {.notes}` blocks only.

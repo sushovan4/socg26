@@ -1,33 +1,67 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" preserveAspectRatio="xMidYMid meet">
-  <!--
-    BROADSHEET SECTION-DIVIDER PLATE — copy this file once per section
-    (e.g., motivation-plate.svg, theory-plate.svg). Replace masthead
-    title, italic deck, art content, and bottom caption stripe. Keep:
-      * inner frame rule (line 7)
-      * 4 corner fleurons (SVG paths, font-independent — never use Unicode ❦)
-      * horizontal hairline under the deck
-      * Alegreya SC + EB Garamond font stacks
-      * palette: oxblood #6c1d1a, ink #2b211a, sepia #57473a, parchment #c8b894
-  -->
 
   <!-- inner frame rule -->
   <rect x="36" y="36" width="648" height="328" fill="none" stroke="#c8b894" stroke-width="0.6"/>
 
-  <!-- title masthead — REPLACE -->
-  <text x="360" y="68" fill="#6c1d1a" font-family="Alegreya SC, EB Garamond, Georgia, serif" font-weight="500" font-size="16" letter-spacing="4" text-anchor="middle">SECTION TITLE</text>
+  <!-- title masthead -->
+  <text x="360" y="68" fill="#6c1d1a" font-family="Alegreya SC, EB Garamond, Georgia, serif" font-weight="500" font-size="16" letter-spacing="4" text-anchor="middle">GENERAL METRIC GRAPHS</text>
 
-  <!-- italic deck — REPLACE -->
-  <text x="360" y="92" fill="#57473a" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13" text-anchor="middle">— one-line italic deck under the title —</text>
+  <!-- italic deck -->
+  <text x="360" y="92" fill="#57473a" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13" text-anchor="middle">— from the circle to any finite connected graph: loops cannot be destroyed —</text>
 
   <!-- horizontal hairline -->
   <line x1="120" y1="104" x2="600" y2="104" stroke="#c8b894" stroke-width="0.5"/>
 
-  <!-- ===========================================================
-       ART CONTENT GOES HERE — fill the region roughly y∈[110, 320]
-       Use the palette + line weights consistent with the frame.
-       =========================================================== -->
+  <!-- ART LEFT: core G_0 = theta-graph (two vertices, three edges => two loops); hanging trees pruned -->
+  <!-- pruned hanging trees (faint) off the two vertices -->
+  <g stroke="#c8b894" fill="none" stroke-width="1.6" stroke-linecap="round">
+    <line x1="205" y1="150" x2="176" y2="120"/>
+    <line x1="176" y1="120" x2="152" y2="126"/>
+    <line x1="176" y1="120" x2="170" y2="96"/>
+    <line x1="205" y1="300" x2="234" y2="332"/>
+    <line x1="234" y1="332" x2="258" y2="330"/>
+  </g>
+  <!-- core: two ink arcs between the two vertices -->
+  <g stroke="#2b211a" fill="none" stroke-width="2.6" stroke-linecap="round" opacity="0.9">
+    <path d="M 205 150 C 138 180 138 270 205 300"/>
+    <path d="M 205 150 C 272 180 272 270 205 300"/>
+  </g>
+  <!-- the shortest edge e(G_0): the middle edge, drawn in oxblood -->
+  <line x1="205" y1="150" x2="205" y2="300" stroke="#6c1d1a" stroke-width="2.6" stroke-linecap="round"/>
+  <!-- the two vertices of the core -->
+  <g fill="#2b211a" stroke="#f5efde" stroke-width="1.3">
+    <circle cx="205" cy="150" r="5"/>
+    <circle cx="205" cy="300" r="5"/>
+  </g>
+  <text x="234" y="227" fill="#6c1d1a" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="12" text-anchor="middle">e(G&#x2080;)</text>
+  <text x="205" y="336" fill="#57473a" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13" text-anchor="middle">core G&#x2080;</text>
 
-  <!-- corner fleurons — house 4-petal florettes (font-independent SVG paths) -->
+  <!-- arrow to tripod motif -->
+  <g stroke="#6c1d1a" fill="none" stroke-width="1.1">
+    <line x1="316" y1="222" x2="372" y2="222"/>
+    <path d="M 364 217 L 372 222 L 364 227"/>
+  </g>
+
+  <!-- ART RIGHT: tripod (Borsuk-Ulam into trees): circle onto a Y, three points 2pi/3 apart -->
+  <!-- the Y / tripod -->
+  <g stroke="#2b211a" fill="none" stroke-width="2.6" stroke-linecap="round">
+    <line x1="520" y1="222" x2="520" y2="158"/>
+    <line x1="520" y1="222" x2="466" y2="286"/>
+    <line x1="520" y1="222" x2="574" y2="286"/>
+  </g>
+  <!-- the source circle, faint, mapping onto it -->
+  <circle cx="520" cy="222" r="62" fill="none" stroke="#c8b894" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <!-- three collapsing points 2pi/3 apart -->
+  <g fill="#6c1d1a" stroke="#f5efde" stroke-width="1.2">
+    <circle cx="520" cy="158" r="5"/>
+    <circle cx="466" cy="286" r="5"/>
+    <circle cx="574" cy="286" r="5"/>
+  </g>
+  <!-- center, the common fiber image -->
+  <circle cx="520" cy="222" r="4.5" fill="#2b211a" stroke="#f5efde" stroke-width="1.2"/>
+  <text x="520" y="334" fill="#57473a" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11.5" text-anchor="middle">three pts, 2π/3 apart</text>
+
+  <!-- corner fleurons -->
   <g fill="#c8b894" stroke="none">
     <g transform="translate(52, 52) scale(0.9)">
       <path d="M 0 -8 Q 5 -3 0 0 Q -5 -3 0 -8 Z"/>
@@ -59,6 +93,6 @@
     </g>
   </g>
 
-  <!-- caption stripe at bottom — REPLACE -->
-  <text x="360" y="356" fill="#57473a" font-family="Alegreya SC, EB Garamond, Georgia, serif" font-size="11" letter-spacing="3" text-anchor="middle">— SHORT CAPS-LOCK CAPTION —</text>
+  <!-- caption stripe -->
+  <text x="360" y="356" fill="#57473a" font-family="Alegreya SC, EB Garamond, Georgia, serif" font-size="11" letter-spacing="3" text-anchor="middle">— BORSUK–ULAM INTO TREES, AND A DENSITY OF e(G₀)/16 —</text>
 </svg>

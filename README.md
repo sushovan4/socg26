@@ -66,6 +66,7 @@ quarto preview index.qmd                   # live-reload preview
 - **Greek letters**: always KaTeX (`$\nu$`, `$\rho$`, `$\Delta$`), never Unicode (ν, ρ, Δ) in body text. CSS text-transform upcases them silently.
 - **Fleurons**: SVG paths only, never Unicode `❦` (renders as apple-glyph in font fallback).
 - **Title speaker notes**: configure `TITLE_NOTES_HTML` in `assets/inject-landmark.js`. A top-level `:::notes` block creates a phantom blank slide 2.
+- **Phantom blank slide 2**: any body content before the first `#` heading — even an HTML `<!-- comment -->` — becomes an empty slide 2. Keep nothing between the `---` front matter and the first `# § ...` divider.
 - **Std-dev subscripts**: `$\mathbf{87.2}_{\pm 0.6}$` not `**87.2** ${\pm 0.6}$`.
 - **Cross-refs**: no "Thm 3.1" / "Eq. (11)" / "§2.5" in user-visible text — keep in `::: {.notes}` only.
 

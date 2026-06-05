@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 50 720 184" style="max-height: 180px;" font-family="EB Garamond, Georgia, serif">
+
+  <!-- ============ (a) CLEAN TREE: the sample reaches the leaves -> equality ============ -->
+  <g stroke="#2b211a" fill="none" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <line x1="186" y1="184" x2="186" y2="150"/>
+    <line x1="186" y1="150" x2="146" y2="110"/>
+    <line x1="186" y1="150" x2="226" y2="110"/>
+    <line x1="146" y1="110" x2="120" y2="74"/>
+    <line x1="146" y1="110" x2="168" y2="68"/>
+    <line x1="226" y1="110" x2="206" y2="68"/>
+    <line x1="226" y1="110" x2="254" y2="76"/>
+  </g>
+  <!-- sample dots: every leaf is reached -->
+  <g fill="#6c1d1a" stroke="#f5efde" stroke-width="1">
+    <circle cx="186" cy="184" r="4.2"/>
+    <circle cx="186" cy="150" r="4.2"/>
+    <circle cx="146" cy="110" r="4.2"/>
+    <circle cx="226" cy="110" r="4.2"/>
+    <circle cx="120" cy="74" r="4.2"/>
+    <circle cx="168" cy="68" r="4.2"/>
+    <circle cx="206" cy="68" r="4.2"/>
+    <circle cx="254" cy="76" r="4.2"/>
+  </g>
+  <text x="186" y="208" fill="#2b211a" font-style="italic" font-size="13.5" text-anchor="middle">d<tspan baseline-shift="sub" font-size="0.7em">GH</tspan> = d<tspan baseline-shift="sub" font-size="0.7em">H</tspan></text>
+  <text x="186" y="227" fill="#57473a" font-family="Alegreya SC, EB Garamond, Georgia, serif" font-size="9.5" letter-spacing="1.2" text-anchor="middle">(a)  THE SAMPLE REACHES THE LEAVES</text>
+
+  <line x1="360" y1="58" x2="360" y2="196" stroke="#c8b894" stroke-width="0.6"/>
+
+  <!-- ============ (b) THE FAN: leaves under-sampled -> equality fails ============ -->
+  <g transform="translate(534, 186)">
+    <!-- arms of the fan (nearly equal lengths) -->
+    <g stroke="#2b211a" fill="none" stroke-width="2.2" stroke-linecap="round" opacity="0.85">
+      <line x1="0" y1="0" x2="-94" y2="-104"/>
+      <line x1="0" y1="0" x2="-50" y2="-124"/>
+      <line x1="0" y1="0" x2="0" y2="-132"/>
+      <line x1="0" y1="0" x2="50" y2="-124"/>
+      <line x1="0" y1="0" x2="94" y2="-104"/>
+    </g>
+    <!-- dense sample clustered at the hub -->
+    <g fill="#6c1d1a" stroke="#f5efde" stroke-width="0.9">
+      <circle cx="0" cy="0" r="3.8"/>
+      <circle cx="-30" cy="-33" r="3"/>
+      <circle cx="-16" cy="-39" r="3"/>
+      <circle cx="0" cy="-42" r="3"/>
+      <circle cx="16" cy="-39" r="3"/>
+      <circle cx="30" cy="-33" r="3"/>
+    </g>
+    <!-- the leaf tips are missed (hollow) -->
+    <g fill="#f5efde" stroke="#57473a" stroke-width="1.1">
+      <circle cx="-94" cy="-104" r="3.4"/>
+      <circle cx="-50" cy="-124" r="3.4"/>
+      <circle cx="0" cy="-132" r="3.4"/>
+      <circle cx="50" cy="-124" r="3.4"/>
+      <circle cx="94" cy="-104" r="3.4"/>
+    </g>
+    <!-- the missed gap to a tip = d_H (large) -->
+    <line x1="35" y1="-38" x2="86" y2="-98" stroke="#6c1d1a" stroke-width="1" stroke-dasharray="3 3" opacity="0.8"/>
+    <text x="82" y="-58" fill="#6c1d1a" font-style="italic" font-size="10.5" text-anchor="start">d<tspan baseline-shift="sub" font-size="0.7em">H</tspan></text>
+  </g>
+  <text x="534" y="208" fill="#6c1d1a" font-style="italic" font-size="13.5" text-anchor="middle">d<tspan baseline-shift="sub" font-size="0.7em">GH</tspan> ≪ d<tspan baseline-shift="sub" font-size="0.7em">H</tspan></text>
+  <text x="534" y="227" fill="#57473a" font-family="Alegreya SC, EB Garamond, Georgia, serif" font-size="9.5" letter-spacing="1.2" text-anchor="middle">(b)  THE FAN — LEAVES UNDER-SAMPLED</text>
+</svg>

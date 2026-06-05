@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" style="max-height: 240px;">
+
+  <!-- a wedge of intervals ("fan") glued at one central point -->
+  <!-- central hub -->
+  <g transform="translate(360, 168)">
+    <!-- arms -->
+    <g stroke="#2b211a" fill="none" stroke-width="2.2" stroke-linecap="round" opacity="0.85">
+      <line x1="0" y1="0" x2="-200" y2="-118"/>
+      <line x1="0" y1="0" x2="-130" y2="-150"/>
+      <line x1="0" y1="0" x2="-44"  y2="-160"/>
+      <line x1="0" y1="0" x2="44"   y2="-160"/>
+      <line x1="0" y1="0" x2="130"  y2="-150"/>
+      <line x1="0" y1="0" x2="200"  y2="-118"/>
+    </g>
+
+    <!-- dense sample near the hub (oxblood) -->
+    <g fill="#6c1d1a" stroke="#f5efde" stroke-width="0.9">
+      <circle cx="0" cy="0" r="4"/>
+      <circle cx="-50" cy="-30" r="3"/>
+      <circle cx="-33" cy="-38" r="3"/>
+      <circle cx="-11" cy="-40" r="3"/>
+      <circle cx="11" cy="-40" r="3"/>
+      <circle cx="33" cy="-38" r="3"/>
+      <circle cx="50" cy="-30" r="3"/>
+    </g>
+
+    <!-- leaf tips badly missed: hollow markers + gap brackets -->
+    <g fill="#f5efde" stroke="#57473a" stroke-width="1">
+      <circle cx="-200" cy="-118" r="3.4"/>
+      <circle cx="-130" cy="-150" r="3.4"/>
+      <circle cx="-44"  cy="-160" r="3.4"/>
+      <circle cx="44"   cy="-160" r="3.4"/>
+      <circle cx="130"  cy="-150" r="3.4"/>
+      <circle cx="200"  cy="-118" r="3.4"/>
+    </g>
+
+    <!-- a "missed gap" indicator along one arm -->
+    <line x1="33" y1="-38" x2="172" y2="-117" stroke="#6c1d1a" stroke-width="1" stroke-dasharray="3 3" opacity="0.7"/>
+  </g>
+
+  <!-- annotations -->
+  <text x="360" y="40" fill="#57473a" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13" text-anchor="middle">dense at the centre — tips under-sampled</text>
+  <text x="200" y="70" fill="#6c1d1a" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13" text-anchor="middle">d<tspan baseline-shift="sub" font-size="0.7em">H</tspan> large (misses tips)</text>
+  <text x="520" y="70" fill="#2b211a" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13" text-anchor="middle">d<tspan baseline-shift="sub" font-size="0.7em">GH</tspan> tiny (arms interchange)</text>
+
+  <text x="360" y="194" fill="#57473a" font-family="Alegreya SC, EB Garamond, Georgia, serif" font-size="10" letter-spacing="2" text-anchor="middle">THE FAN — A WEDGE OF INTERVALS</text>
+</svg>

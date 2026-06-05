@@ -6,38 +6,44 @@
   // ============================================================
   // CUSTOMIZE PER TALK — title-block content
   // ============================================================
-  var ARXIV_URL = 'https://arxiv.org/abs/0000.00000';   // REPLACE with paper URL or '#'
+  var ARXIV_URL = 'https://arxiv.org/abs/2411.09182';
 
   var GAZETTE = {
-    volume:   'Vol. I',
-    issue:    'No. I',
-    name:     'The Topology Gazette',         // REPLACE with venue-flavored gazette name
-    edition:  'Workshop Edition',             // REPLACE with edition tag
+    volume:   'Vol. 367',
+    issue:    'No. 3',
+    name:     'The Dagstuhl Gazette',
+    edition:  'SoCG Edition',
   };
 
   var COAUTHORS = [
-    // REPLACE with co-author names (or leave [] for solo talks)
-    // 'Co-Author One',
-    // 'Co-Author Two',
+    'Henry Adams',
+    'Fedor Manin',
+    'Žiga Virk',
+    'Nicolò Zava',
   ];
 
   var EDITION_LINE = {
-    field:    'Field · Subfield · Lens',      // REPLACE
-    venue:    { text: 'Venue, Institution',   // REPLACE
-                href: '#' },
+    field:    'Computational Geometry · Applied Topology · Gromov–Hausdorff',
+    venue:    { text: 'SoCG 2026 · New Brunswick, NJ',
+                href: 'https://cgweek26.computational-geometry.org/' },
   };
 
   var PULLQUOTE = {
-    body:    'A one-line punch quote, italic, anchored bottom-right.',  // REPLACE
-    attrib:  'a topological dispatch',                                  // REPLACE
+    body:    'Too little distortion, and the map would have to tear the graph apart. Connectedness forbids it — so Gromov–Hausdorff and Hausdorff must agree.',
+    attrib:  'a dispatch on distortion',
   };
 
   // Speaker notes for the title slide (HTML; presenter-only).
   // Inline `::: {.notes}` at the top of the .qmd would create a phantom
   // empty slide, so we inject the title's notes here instead.
   var TITLE_NOTES_HTML =
-    '<p>REPLACE with opening notes — greet the audience, name the talk, name co-authors, ' +
-    'pitch the headline in 2–3 sentences, list the section roadmap.</p>';
+    '<p>Thanks — good morning. The talk is <strong>Lower Bounding the Gromov–Hausdorff Distance in Metric Graphs</strong>. ' +
+    'Joint work with Henry Adams, Fedor Manin, Žiga Virk, and Nicolò Zava.</p>' +
+    '<p>Here is the one sentence to land. The Gromov–Hausdorff distance is brutal to compute — even approximating it within a factor of three is NP-hard for trees. ' +
+    'But for a dense enough sample <em>X</em> of a metric graph <em>G</em>, the Gromov–Hausdorff distance simply <em>equals</em> the easy-to-compute Hausdorff distance. ' +
+    'And the reason is pure topology: a map with too little distortion would contradict the connectedness of <em>G</em>.</p>' +
+    '<p>Four acts. One — the problem: a distance you cannot compute. Two — the idea: connectedness as an obstruction, with trees as the clean case. ' +
+    'Three — the circle, where we sharpen the density threshold from π/6 to π/3, and that is optimal. Four — general metric graphs, and what stays open.</p>';
 
   // ============================================================
   // STRUCTURAL SCAFFOLDING — usually no edits needed below
@@ -75,8 +81,29 @@
   // Decorative placeholder SVGs for the left/right title-block "landmark plates".
   // Replace with talk-relevant figures (a thumbnail diagram, QR code, etc.)
   // when you want them; the broadsheet aesthetic also works without them.
-  var LEFT_PLATE_SVG  = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"></svg>';
-  var RIGHT_PLATE_SVG = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"></svg>';
+  // Left landmark: a metric graph (core loop + hanging trees) with a sparse sample X.
+  var LEFT_PLATE_SVG  =
+    '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet">' +
+      '<g stroke="#2b211a" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.78">' +
+        '<path d="M 300 150 C 430 150 470 260 430 360 C 390 460 210 460 170 360 C 130 260 170 150 300 150 Z"/>' +
+        '<line x1="300" y1="150" x2="300" y2="60"/>' +
+        '<line x1="300" y1="60" x2="240" y2="30"/>' +
+        '<line x1="300" y1="60" x2="360" y2="30"/>' +
+        '<line x1="430" y1="360" x2="520" y2="400"/>' +
+        '<line x1="170" y1="360" x2="80" y2="400"/>' +
+      '</g>' +
+      '<g fill="#6c1d1a" stroke="#f5efde" stroke-width="2.5" opacity="0.95">' +
+        '<circle cx="300" cy="150" r="11"/><circle cx="412" cy="208" r="11"/>' +
+        '<circle cx="430" cy="360" r="11"/><circle cx="300" cy="445" r="11"/>' +
+        '<circle cx="172" cy="312" r="11"/><circle cx="186" cy="196" r="11"/>' +
+        '<circle cx="300" cy="60" r="11"/><circle cx="80" cy="400" r="11"/>' +
+        '<circle cx="520" cy="400" r="11"/>' +
+      '</g>' +
+    '</svg>';
+  // Right landmark: a scannable QR code to the arXiv paper (assets/qr-arxiv.svg,
+  // generated from ARXIV_URL). The plate itself is also a clickable link.
+  var RIGHT_PLATE_SVG =
+    '<img src="assets/qr-arxiv.svg" alt="QR code to the arXiv paper" />';
 
   // Wax seal — initials inside a serif circle. Customize the textPaths
   // (top/bottom band) and inner monogram for your name.
@@ -96,9 +123,9 @@
       '<circle class="seal-ring" cx="40" cy="40" r="36" />' +
       '<circle class="seal-inner" cx="40" cy="40" r="33" />' +
       '<circle class="seal-inner" cx="40" cy="40" r="22" />' +
-      '<text class="seal-band"><textPath href="#seal-top" startOffset="50%" text-anchor="middle">AUTHOR NAME</textPath></text>' +    // REPLACE
+      '<text class="seal-band"><textPath href="#seal-top" startOffset="50%" text-anchor="middle">SVSHOVAN MAJHI</textPath></text>' +
       '<text class="seal-band"><textPath href="#seal-bottom" startOffset="50%" text-anchor="middle">· ANNO MMXXVI ·</textPath></text>' +
-      '<text class="seal-mono" x="40" y="46" text-anchor="middle">AN</text>' +    // REPLACE initials
+      '<text class="seal-mono" x="40" y="46" text-anchor="middle">SM</text>' +
     '</svg>';
 
   function inject() {
@@ -188,4 +215,23 @@
   } else {
     inject();
   }
+})();
+
+// Toggle a "finis" class on .reveal while the colophon slide is showing, so the
+// theme can drop the running footer and page number on the back page. Quarto
+// strips data-state from headings, so we drive it from Reveal's slide events.
+(function () {
+  function hook() {
+    if (typeof Reveal === 'undefined' || !Reveal.on) { setTimeout(hook, 100); return; }
+    function update() {
+      var cur = Reveal.getCurrentSlide();
+      var isColophon = !!(cur && cur.classList && cur.classList.contains('colophon'));
+      var r = document.querySelector('.reveal');
+      if (r) r.classList.toggle('finis', isColophon);
+    }
+    Reveal.on('slidechanged', update);
+    Reveal.on('ready', update);
+    update();
+  }
+  hook();
 })();
