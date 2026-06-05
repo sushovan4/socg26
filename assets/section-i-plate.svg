@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" preserveAspectRatio="xMidYMid meet">
+
+  <!-- inner frame rule -->
+  <rect x="36" y="36" width="648" height="328" fill="none" stroke="#c8b894" stroke-width="0.6"/>
+
+  <!-- title masthead -->
+  <text x="360" y="68" fill="#6c1d1a" font-family="Alegreya SC, EB Garamond, Georgia, serif" font-weight="500" font-size="16" letter-spacing="4" text-anchor="middle">A DISTANCE YOU CAN'T COMPUTE</text>
+
+  <!-- italic deck -->
+  <text x="360" y="92" fill="#57473a" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13" text-anchor="middle">— Gromov–Hausdorff is a cornerstone, and brutally hard —</text>
+
+  <!-- horizontal hairline -->
+  <line x1="120" y1="104" x2="600" y2="104" stroke="#c8b894" stroke-width="0.5"/>
+
+  <!-- ART: a metric graph G with a sparse sample X -->
+  <g stroke="#2b211a" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <path d="M 230 215 C 230 160 320 150 360 175 C 400 200 410 260 360 290 C 310 320 230 285 230 215 Z"/>
+    <line x1="278" y1="167" x2="262" y2="128"/>
+    <line x1="262" y1="128" x2="232" y2="118"/>
+    <line x1="262" y1="128" x2="288" y2="112"/>
+    <line x1="404" y1="248" x2="448" y2="262"/>
+    <line x1="448" y1="262" x2="478" y2="248"/>
+    <line x1="448" y1="262" x2="462" y2="294"/>
+  </g>
+  <!-- sample X: oxblood dots, deliberately sparse -->
+  <g fill="#6c1d1a" stroke="#f5efde" stroke-width="1.2">
+    <circle cx="278" cy="167" r="5"/>
+    <circle cx="360" cy="175" r="5"/>
+    <circle cx="404" cy="248" r="5"/>
+    <circle cx="300" cy="300" r="5"/>
+    <circle cx="230" cy="215" r="5"/>
+    <circle cx="262" cy="128" r="5"/>
+    <circle cx="448" cy="262" r="5"/>
+  </g>
+  <text x="320" y="338" fill="#57473a" font-family="Alegreya SC, EB Garamond, Georgia, serif" font-size="9.5" letter-spacing="2" text-anchor="middle">METRIC GRAPH G + SAMPLE X</text>
+
+  <!-- two ledgers: easy d_H, hard d_GH -->
+  <g font-family="EB Garamond, Georgia, serif">
+    <rect x="520" y="138" width="130" height="46" fill="none" stroke="#c8b894" stroke-width="0.8"/>
+    <text x="585" y="160" fill="#2b211a" font-style="italic" font-size="17" text-anchor="middle">d<tspan baseline-shift="sub" font-size="0.62em">H</tspan></text>
+    <text x="585" y="177" fill="#57473a" font-size="9.5" font-style="italic" text-anchor="middle">easy · O(n²)</text>
+
+    <rect x="520" y="200" width="130" height="62" fill="#6c1d1a" fill-opacity="0.07" stroke="#6c1d1a" stroke-width="1"/>
+    <text x="585" y="223" fill="#6c1d1a" font-style="italic" font-size="17" text-anchor="middle">d<tspan baseline-shift="sub" font-size="0.62em">GH</tspan></text>
+    <text x="585" y="242" fill="#6c1d1a" font-family="Alegreya SC, EB Garamond, Georgia, serif" font-weight="700" font-size="11" letter-spacing="2" text-anchor="middle">NP-HARD</text>
+    <text x="585" y="255" fill="#57473a" font-size="8.5" font-style="italic" text-anchor="middle">to 3-approximate</text>
+  </g>
+
+  <!-- bridge arrows graph -> ledgers -->
+  <g stroke="#6c1d1a" fill="none" stroke-width="1" opacity="0.7">
+    <line x1="488" y1="200" x2="514" y2="172"/>
+    <path d="M 508 169 L 514 172 L 510 177"/>
+    <line x1="488" y1="248" x2="514" y2="228"/>
+    <path d="M 508 225 L 514 228 L 510 233"/>
+  </g>
+
+  <!-- corner fleurons -->
+  <g fill="#c8b894" stroke="none">
+    <g transform="translate(52, 52) scale(0.9)">
+      <path d="M 0 -8 Q 5 -3 0 0 Q -5 -3 0 -8 Z"/>
+      <path d="M 0 8  Q 5 3  0 0 Q -5 3  0 8  Z"/>
+      <path d="M -8 0 Q -3 -5 0 0 Q -3 5 -8 0 Z"/>
+      <path d="M 8 0  Q 3 -5  0 0 Q 3 5  8 0  Z"/>
+      <circle cx="0" cy="0" r="2.0"/>
+    </g>
+    <g transform="translate(668, 52) scale(0.9)">
+      <path d="M 0 -8 Q 5 -3 0 0 Q -5 -3 0 -8 Z"/>
+      <path d="M 0 8  Q 5 3  0 0 Q -5 3  0 8  Z"/>
+      <path d="M -8 0 Q -3 -5 0 0 Q -3 5 -8 0 Z"/>
+      <path d="M 8 0  Q 3 -5  0 0 Q 3 5  8 0  Z"/>
+      <circle cx="0" cy="0" r="2.0"/>
+    </g>
+    <g transform="translate(52, 348) scale(0.9)">
+      <path d="M 0 -8 Q 5 -3 0 0 Q -5 -3 0 -8 Z"/>
+      <path d="M 0 8  Q 5 3  0 0 Q -5 3  0 8  Z"/>
+      <path d="M -8 0 Q -3 -5 0 0 Q -3 5 -8 0 Z"/>
+      <path d="M 8 0  Q 3 -5  0 0 Q 3 5  8 0  Z"/>
+      <circle cx="0" cy="0" r="2.0"/>
+    </g>
+    <g transform="translate(668, 348) scale(0.9)">
+      <path d="M 0 -8 Q 5 -3 0 0 Q -5 -3 0 -8 Z"/>
+      <path d="M 0 8  Q 5 3  0 0 Q -5 3  0 8  Z"/>
+      <path d="M -8 0 Q -3 -5 0 0 Q -3 5 -8 0 Z"/>
+      <path d="M 8 0  Q 3 -5  0 0 Q 3 5  8 0  Z"/>
+      <circle cx="0" cy="0" r="2.0"/>
+    </g>
+  </g>
+
+  <!-- caption stripe -->
+  <text x="360" y="356" fill="#57473a" font-family="Alegreya SC, EB Garamond, Georgia, serif" font-size="11" letter-spacing="3" text-anchor="middle">— THE EASY HALF IS FREE; THE LOWER BOUND IS THE PRIZE —</text>
+</svg>

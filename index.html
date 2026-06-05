@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-1ea80994d423707dffa4c5deb2e491f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.29">
+
+  <meta name="author" content="Sushovan Majhi">
+  <title>Lower Bounding the Gromov–Hausdorff Distance in Metric Graphs</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-f05e4ef8da2fff9370a29599298d1009.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section class="quarto-title-block center">
+  <h1 class="title">Lower Bounding the Gromov–Hausdorff Distance in Metric Graphs</h1>
+  <p class="subtitle"><em>for a dense sample, the Gromov–Hausdorff distance equals the Hausdorff distance</em></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Sushovan Majhi 
+</div>
+</div>
+</div>
+
+  <p class="date">June 2026</p>
+</section>
+<section>
+<section class="title-slide slide level1 section-divider center">
+<h1>§ I. A Distance You Can’t Compute</h1>
+<div class="plate">
+<p><img data-src="assets/section-i-plate.svg"></p>
+</div>
+<aside class="notes">
+<p>Section I — the problem.</p>
+<p>The Gromov–Hausdorff distance measures how far two metric spaces are from being isometric. It is a cornerstone dissimilarity in topological data analysis — for comparing shapes and datasets. But it is brutal to compute: even <em>approximating</em> it within a factor of three is NP-hard for trees with unit edges (Agarwal–Fox–Nath–Sidiropoulos–Wang).</p>
+<p>The applied move is to replace infinite objects by finite samples and measure density with the Hausdorff distance. For a sample inside the space, one inequality is free. The hard, valuable half is the lower bound. Get it, and the uncomputable quantity collapses to the easy one.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>The cornerstone</h2>
+<div class="standfirst" style="font-size: 0.95em; margin: -0.3rem 0 0.3rem;">
+<p><span class="math inline">d_{\mathrm{H}}</span> needs the sets to live in <em>one</em> space; <span class="math inline">d_{\mathrm{GH}}</span> compares them <em>up to isometry</em> — no ambient space required.</p>
+</div>
+<div class="def-box fragment" data-title="Hausdorff — sets in a common space" style="font-size: 0.79em; padding: 0.5rem 1.3rem 0.35rem;">
+<p>For <span class="math inline">X, Y \subseteq Z</span>, with <span class="math inline">d(x,Y) = \inf_{y \in Y} d(x,y)</span> the distance to the nearest point, <span class="math display"> d_{\mathrm{H}}(X,Y) \;=\; \max\Big\{\, \sup_{x \in X} d(x,Y),\ \ \sup_{y \in Y} d(y,X) \,\Big\}. </span></p>
+</div>
+<div class="def-box fragment" data-title="Gromov–Hausdorff — spaces up to isometry" style="font-size: 0.79em; padding: 0.5rem 1.3rem 0.35rem;">
+<p>For metric spaces <span class="math inline">(X, d_X)</span> and <span class="math inline">(Y, d_Y)</span>, over <strong>correspondences</strong> <span class="math inline">R \subseteq X \times Y</span> (matching every point of both), with distortion <span class="math inline">\operatorname{dis}(R) = \sup_{(x,y),(x',y') \in R} \big| d_X(x,x') - d_Y(y,y') \big|</span>, <span class="math display"> d_{\mathrm{GH}}(X,Y) \;=\; \tfrac{1}{2}\,\inf_{R}\,\operatorname{dis}(R), \qquad =\,0 \;\text{ iff } X \cong Y. </span></p>
+</div>
+<div class="transition-line fragment fade-up">
+<p><em>Simple to define — and brutal to compute.</em> <span class="followup-stamp tilt-b"><span class="manicule">☞</span>The wall</span></p>
+</div>
+<aside class="notes">
+<p>Two distances, side by side. The Hausdorff distance assumes <span class="math inline">X</span> and <span class="math inline">Y</span> already sit inside a common metric space <span class="math inline">Z</span>: <span class="math inline">d(x,Y)</span> is the distance from <span class="math inline">x</span> to the nearest point of <span class="math inline">Y</span>, and <span class="math inline">d_{\mathrm{H}}</span> symmetrizes “how far either set strays from the other” with a max. It is <em>extrinsic</em> — it depends on how the sets are placed.</p>
+<p>The Gromov–Hausdorff distance drops the ambient space. A <em>correspondence</em> matches every point of <span class="math inline">X</span> to at least one point of <span class="math inline">Y</span> and vice versa — a way of overlaying two abstract spaces. Its distortion is the largest discrepancy between a distance in <span class="math inline">X</span> and the matched distance in <span class="math inline">Y</span>. The Gromov–Hausdorff distance is <em>half</em> the infimal distortion — zero exactly when <span class="math inline">X</span> and <span class="math inline">Y</span> are isometric. It is <em>intrinsic</em>.</p>
+<p>So Hausdorff is extrinsic and cheap; Gromov–Hausdorff is intrinsic and — as the next slide shows — brutal.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>The wall</h2>
+<div class="standfirst" style="font-size: 0.95em; margin: -0.3rem 0 0.3rem;">
+<p>Hausdorff distance is cheap. Gromov–Hausdorff is <strong>NP-hard</strong> — even to <em>approximate</em>.</p>
+</div>
+<div class="dispatches fragment no-bullets" data-title="Easy to gauge, hard to compute" style="font-size: 0.8em; padding: 0.5rem 1.2rem 0.4rem; margin: 0.6rem auto 0.4rem;">
+<ul>
+<li class="fragment"><strong>Hausdorff</strong> <span class="math inline">d_{\mathrm{H}}(X,Y)</span> — compare all pairs of points: <span class="math inline">\mathcal{O}(n^2)</span> time.</li>
+<li class="fragment"><strong>Exact</strong> <span class="math inline">d_{\mathrm{GH}}</span> — minimize over the <span class="math inline">2^{\Theta(n^2)}</span> correspondences; computing it is <strong>NP-hard</strong> <span class="cite">Schmiedl, 2017</span>.</li>
+<li class="fragment"><strong>A 3-approximation</strong> is still <strong>NP-hard</strong> — already for metric trees with unit edges <span class="cite">Agarwal, Fox, Nath, Sidiropoulos &amp; Wang, 2018</span>.</li>
+<li class="fragment"><strong>Better needs structure</strong> — a <span class="math inline">5/4</span>-approximation for finite subsets of <span class="math inline">\mathbb{R}</span> <span class="cite"><span class="me">Majhi</span>, Vitter &amp; Wenk, 2024</span>.</li>
+</ul>
+</div>
+<div class="transition-line fragment fade-up">
+<p><em>Tight factors live only in very special geometry.</em> <span class="followup-stamp tilt-a"><span class="manicule">☞</span>So we sample</span></p>
+</div>
+<aside class="notes">
+<p>The computational gap. The Hausdorff distance between two <span class="math inline">n</span>-point samples is just all pairwise distances — quadratic, <span class="math inline">\mathcal{O}(n^2)</span>. But the Gromov–Hausdorff distance minimizes over correspondences, and there are <span class="math inline">2^{\Theta(n^2)}</span> of them, so brute force is <span class="math inline">2^{\Theta(n^2)}</span>. Computing it exactly is NP-hard (Schmiedl, 2017). Even approximating within a factor of <span class="math inline">3</span> is NP-hard, already for metric trees with unit edges (Agarwal, Fox, Nath, Sidiropoulos &amp; Wang, 2018). Better factors exist only in very special geometry — our own earlier work gives a <span class="math inline">5/4</span>-approximation when <span class="math inline">X</span> and <span class="math inline">Y</span> are finite subsets of the real line (Majhi, Vitter &amp; Wenk, 2024).</p>
+<p>So the community samples.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>The applied move — sample, then bound</h2>
+<div class="standfirst" style="font-size: 0.95em; margin: -0.3rem 0 0.3rem;">
+<p>Replace a <strong>manifold</strong> <span class="math inline">M</span> by a finite sample <span class="math inline">X \subseteq M</span>; use the <strong>Hausdorff distance</strong> <span class="math inline">d_{\mathrm{H}}</span> as a density gauge.</p>
+</div>
+<div style="display: flex; gap: 1.3rem; align-items: center; max-width: 95%; margin: 0.5rem auto 0.35rem;">
+<div style="flex: 0 0 34%; min-width: 0; display: flex; justify-content: center;">
+<svg viewbox="8 28 316 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:230px;height:auto;display:block;" font-family="EB Garamond, Georgia, serif">
+  <!-- the manifold M: a torus (outline + hole) -->
+  <ellipse cx="165" cy="120" rx="140" ry="82" fill="none" stroke="#2b211a" stroke-width="2.6"></ellipse>
+  <path d="M 113 114 Q 165 95 217 114 Q 165 135 113 114 Z" fill="none" stroke="#2b211a" stroke-width="2.2"></path>
+  <!-- dense sample X on the manifold -->
+  <g fill="#6c1d1a">
+      <circle cx="115.7" cy="62.7" r="2.6"></circle>
+      <circle cx="207.3" cy="49.9" r="2.6"></circle>
+      <circle cx="41.2" cy="121.2" r="2.6"></circle>
+      <circle cx="35.5" cy="109.1" r="2.6"></circle>
+      <circle cx="143.9" cy="173.6" r="2.6"></circle>
+      <circle cx="59.7" cy="74.6" r="2.6"></circle>
+      <circle cx="265.4" cy="85.5" r="2.6"></circle>
+      <circle cx="111.4" cy="171.8" r="2.6"></circle>
+      <circle cx="75.6" cy="133.4" r="2.6"></circle>
+      <circle cx="178.4" cy="48.3" r="2.6"></circle>
+      <circle cx="113.0" cy="134.0" r="2.6"></circle>
+      <circle cx="247.4" cy="152.6" r="2.6"></circle>
+      <circle cx="93.3" cy="132.2" r="2.6"></circle>
+      <circle cx="172.1" cy="181.5" r="2.6"></circle>
+      <circle cx="229.2" cy="85.2" r="2.6"></circle>
+      <circle cx="142.1" cy="162.2" r="2.6"></circle>
+      <circle cx="67.6" cy="118.2" r="2.6"></circle>
+      <circle cx="239.1" cy="132.0" r="2.6"></circle>
+      <circle cx="270.1" cy="89.5" r="2.6"></circle>
+      <circle cx="219.7" cy="135.5" r="2.6"></circle>
+      <circle cx="157.7" cy="146.9" r="2.6"></circle>
+      <circle cx="255.1" cy="84.7" r="2.6"></circle>
+      <circle cx="133.0" cy="147.7" r="2.6"></circle>
+      <circle cx="61.2" cy="78.6" r="2.6"></circle>
+      <circle cx="134.5" cy="180.9" r="2.6"></circle>
+      <circle cx="47.6" cy="111.7" r="2.6"></circle>
+      <circle cx="178.8" cy="182.9" r="2.6"></circle>
+      <circle cx="103.0" cy="106.1" r="2.6"></circle>
+      <circle cx="125.5" cy="183.0" r="2.6"></circle>
+      <circle cx="74.3" cy="76.0" r="2.6"></circle>
+      <circle cx="90.3" cy="117.5" r="2.6"></circle>
+      <circle cx="190.0" cy="81.1" r="2.6"></circle>
+      <circle cx="54.0" cy="142.0" r="2.6"></circle>
+      <circle cx="83.5" cy="64.6" r="2.6"></circle>
+      <circle cx="53.4" cy="97.6" r="2.6"></circle>
+      <circle cx="196.9" cy="62.4" r="2.6"></circle>
+      <circle cx="95.6" cy="95.0" r="2.6"></circle>
+      <circle cx="127.0" cy="58.1" r="2.6"></circle>
+      <circle cx="120.9" cy="81.4" r="2.6"></circle>
+      <circle cx="172.9" cy="62.0" r="2.6"></circle>
+      <circle cx="266.7" cy="152.2" r="2.6"></circle>
+      <circle cx="98.1" cy="98.1" r="2.6"></circle>
+      <circle cx="71.8" cy="164.6" r="2.6"></circle>
+      <circle cx="174.1" cy="165.8" r="2.6"></circle>
+      <circle cx="117.3" cy="74.6" r="2.6"></circle>
+      <circle cx="263.7" cy="170.2" r="2.6"></circle>
+      <circle cx="254.1" cy="159.3" r="2.6"></circle>
+      <circle cx="88.5" cy="122.9" r="2.6"></circle>
+      <circle cx="97.6" cy="151.6" r="2.6"></circle>
+      <circle cx="292.8" cy="111.3" r="2.6"></circle>
+      <circle cx="86.7" cy="75.2" r="2.6"></circle>
+      <circle cx="80.1" cy="71.5" r="2.6"></circle>
+      <circle cx="199.7" cy="185.7" r="2.6"></circle>
+      <circle cx="260.3" cy="116.6" r="2.6"></circle>
+      <circle cx="207.8" cy="169.1" r="2.6"></circle>
+      <circle cx="48.7" cy="146.3" r="2.6"></circle>
+      <circle cx="235.0" cy="116.4" r="2.6"></circle>
+      <circle cx="75.0" cy="167.4" r="2.6"></circle>
+  </g>
+  <!-- labels -->
+  <text x="165" y="218" fill="#2b211a" font-style="italic" font-size="19" text-anchor="middle">M</text>
+  <text x="315" y="112" fill="#6c1d1a" font-style="italic" font-size="14" text-anchor="start">X</text>
+  <line x1="298" y1="111" x2="311" y2="112" stroke="#6c1d1a" stroke-width="0.8"></line>
+</svg>
+</div>
+<div style="flex: 1 1 auto; min-width: 0;">
+<div class="def-box fragment" data-fragment-index="1" data-title="The two halves, in one line" style="margin: 0; font-size: 0.92em;">
+<p>For <span class="math inline">X \subseteq M</span>, <span class="math display"> C\, d_{\mathrm{H}}(M,X) \;\leq\; d_{\mathrm{GH}}(M,X) \;\leq\; d_{\mathrm{H}}(M,X). </span> The upper bound is free; the lower bound is the prize — and <span class="math inline">C = 1</span> gives <strong>equality</strong>.</p>
+</div>
+</div>
+</div>
+<div class="dispatches fragment" data-fragment-index="2" data-title="Getting a real lower bound" style="font-size: 0.74em; padding: 0.3rem 1.3rem 0.25rem; margin: 1.45rem auto 0.3rem;">
+<ul>
+<li><strong>Naive bounds vanish</strong> — stable invariants give <span class="math inline">d_{\mathrm{GH}} \geq \tfrac12\big|\operatorname{diam}(X) - \operatorname{diam}(Y)\big| \to 0</span> for dense <span class="math inline">X</span>.</li>
+<li><strong>Topology delivers</strong> — the <em>fundamental class</em> gives <span class="math inline">d_{\mathrm{GH}}(M,X) \geq C\, d_{\mathrm{H}}(M,X)</span>, <span class="math inline">\tfrac{1}{2} \leq C \leq 1</span>. <span class="cite">Adams, Frick, <span class="me">Majhi</span> &amp; McBride, 2025</span></li>
+</ul>
+</div>
+<div class="transition-line fragment fade-up" data-fragment-index="3">
+<p><strong>The question:</strong> <em>can a dense sample capture the geometry exactly — can <span class="math inline">C = 1</span>?</em> <span class="followup-stamp tilt-c"><span class="manicule">☞</span>On the circle, first</span></p>
+</div>
+<aside class="notes">
+<p>The reformulation. Sample the manifold by a finite <span class="math inline">X</span> and gauge density by the Hausdorff distance. For <span class="math inline">X \subseteq M</span>, matching each point of <span class="math inline">M</span> to a nearest sample point gives a correspondence of distortion at most twice the Hausdorff distance, so <span class="math inline">d_{\mathrm{GH}}(M,X) \le d_{\mathrm{H}}(M,X)</span> always — the easy half. The prize is the reverse: a lower bound <span class="math inline">d_{\mathrm{GH}}(M,X) \ge C\, d_{\mathrm{H}}(M,X)</span>. The larger the <span class="math inline">C</span>, the sharper.</p>
+<p>How do you get such a lower bound? Not from classical <em>stable invariants</em>: the diameter gives <span class="math inline">d_{\mathrm{GH}} \ge \tfrac12|\operatorname{diam}(X)-\operatorname{diam}(Y)|</span>, which is about zero for a dense sample — useless. Real lower bounds need topology. In our earlier work on manifolds (Adams, Frick, Majhi &amp; McBride, 2025), the fundamental class forces <span class="math inline">d_{\mathrm{GH}}(M,X) \ge C\, d_{\mathrm{H}}(M,X)</span> with <span class="math inline">C</span> between <span class="math inline">\tfrac12</span> and <span class="math inline">1</span>. The next question is whether we can push <span class="math inline">C</span> all the way to <span class="math inline">1</span> — and the circle is where we start.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>The circle, and C = 1</h2>
+<div class="standfirst" style="font-size: 0.95em; margin: -0.3rem 0 0.3rem;">
+<p><span class="math inline">C = 1</span> is the dream — a dense sample captures the geometry <em>exactly</em>: <span class="math inline">d_{\mathrm{GH}} = d_{\mathrm{H}}</span>.</p>
+</div>
+<div class="def-box fragment" data-fragment-index="1" data-title="Where it begins — the circle" style="margin: 0.6rem auto 0.5rem;">
+<p>The circle — the simplest space with a loop — already reaches <span class="math inline">C = 1</span>: <span class="math display"> d_{\mathrm{GH}}(S^1,X) &lt; \tfrac{\pi}{6} \;\Rightarrow\; d_{\mathrm{GH}}(S^1,X) = d_{\mathrm{H}}(S^1,X). </span> <span class="cite">Adams, Frick, <span class="me">Majhi</span> &amp; McBride, 2025</span></p>
+</div>
+<div class="dispatches fragment" data-fragment-index="2" data-title="Two questions" style="font-size: 0.8em; padding: 0.5rem 1.2rem 0.4rem; margin: 0.6rem auto 0.4rem;">
+<ul>
+<li>Is the <span class="math inline">\pi/6</span> density threshold the <strong>best possible</strong>?</li>
+<li>Does <span class="math inline">C = 1</span> reach beyond the circle — to <strong>every</strong> metric graph?</li>
+</ul>
+</div>
+<div class="transition-line fragment fade-up">
+<p><em>Connectedness answers both.</em> <span class="followup-stamp tilt-b"><span class="manicule">☞</span>The case of the circle</span></p>
+</div>
+<aside class="notes">
+<p>What would <span class="math inline">C = 1</span> mean? It is the dream case: the easy Hausdorff distance equals the hard Gromov–Hausdorff distance, so a dense sample captures the geometry exactly.</p>
+<p>The circle is the simplest space where this is non-trivial — the simplest space carrying a loop. Prior work (Adams, Frick, Majhi &amp; McBride, 2025) already gets <span class="math inline">C = 1</span> on the circle, provided the sample is dense enough: below a threshold of <span class="math inline">\pi/6</span>.</p>
+<p>That raises two questions, which this talk answers. First, is <span class="math inline">\pi/6</span> the best density threshold, or can it be relaxed? Second, does <span class="math inline">C = 1</span> hold beyond the circle — for every metric graph? Connectedness answers both: we sharpen the circle constant to its optimal value, and we reach every graph.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section class="title-slide slide level1 section-divider center">
+<h1>§ II. The Case of the Circle</h1>
+<div class="plate">
+<p><img data-src="assets/section-ii-plate.svg"></p>
+</div>
+<aside class="notes">
+<p>Section II — the circle.</p>
+<p>The simplest space with a loop is the circle, and it is where the connectedness obstruction is cleanest. Prior work (Adams–Frick–Majhi–McBride) needed density below <span class="math inline">\pi/6</span> to force equality, using <em>homological</em> tools. We go “back in time” to Brouwer-era topology — a small Gromov–Hausdorff distance contradicts <em>connectedness</em> — and we sharpen the constant to <span class="math inline">\pi/3</span>, which we prove is optimal.</p>
+<p>The proof is the showpiece: triangulate, push forward by shortest paths, apply Borsuk–Ulam, and watch two arcs cross. The same mechanism then carries to general metric graphs in the section that follows.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>Sharpening the circle</h2>
+<div class="standfirst" style="font-size: 0.95em; margin: -0.3rem 0 0.3rem;">
+<p>Let <span class="math inline">S^1</span> be the circle of circumference <span class="math inline">2\pi</span>. We sharpen the density threshold from <span class="math inline">\pi/6</span> to <span class="math inline">\pi/3</span>.</p>
+</div>
+<div class="def-box fragment" data-fragment-index="1" data-title="The circle bound" style="margin: 0.6rem auto 0.5rem;">
+<p>For <strong>any</strong> subset <span class="math inline">X \subseteq S^1</span>, <span class="math display"> d_{\mathrm{GH}}(S^1, X) \;\geq\; \min\!\left\{\, \textcolor{#6c1d1a}{d_{\mathrm{H}}}(S^1, X),\ \tfrac{\pi}{3} \,\right\}. </span> In particular, the easy density gauge controls it: <span class="math inline">\textcolor{#6c1d1a}{d_{\mathrm{H}}}(S^1, X) &lt; \tfrac{\pi}{3} \;\Rightarrow\; d_{\mathrm{GH}}(S^1, X) = \textcolor{#6c1d1a}{d_{\mathrm{H}}}(S^1, X).</span></p>
+</div>
+<div class="dispatches fragment no-bullets" data-fragment-index="2" data-title="Why it matters" style="font-size: 0.8em; padding: 0.5rem 1.2rem 0.4rem; margin: 0.6rem auto 0.4rem;">
+<ul>
+<li>The earlier <span class="math inline">\pi/6</span> threshold becomes <span class="math inline">\pi/3</span> — the density hypothesis is <strong>twice as forgiving</strong> <span class="cite">Adams, Frick, <span class="me">Majhi</span> &amp; McBride, 2025</span>.</li>
+</ul>
+</div>
+<div class="transition-line fragment fade-up" data-fragment-index="3">
+<p><em>One triangulation, one application of Borsuk–Ulam.</em> <span class="followup-stamp tilt-b"><span class="manicule">☞</span>The proof in one picture</span></p>
+</div>
+<aside class="notes">
+<p>Take the circle of circumference <span class="math inline">2\pi</span>. Prior work (Adams–Frick–Majhi–McBride) gave equality once the sample was dense enough; we sharpen the density threshold from <span class="math inline">\pi/6</span> to <span class="math inline">\pi/3</span>, and our bound holds for <em>any</em> subset.</p>
+<p>Read the inequality as: the Gromov–Hausdorff distance is at least the minimum of the Hausdorff distance and <span class="math inline">\pi/3</span>. So whenever the Hausdorff density <span class="math inline">d_{\mathrm{H}}(S^1,X)</span> is below <span class="math inline">\pi/3</span>, the minimum is <span class="math inline">d_{\mathrm{H}}</span>, and the two distances coincide. Stating the hypothesis through <span class="math inline">d_{\mathrm{H}}</span> matters — it is the gauge we can actually measure, in <span class="math inline">\mathcal{O}(n^2)</span> time. And as the next slides show, <span class="math inline">\pi/3</span> is sharp.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>The proof, in one picture</h2>
+<div class="standfirst" style="font-size: 0.95em; margin: -0.3rem 0 0.3rem;">
+<p>A low-distortion <span class="math inline">f \colon S^1 \to X</span> becomes a continuous <span class="math inline">\bar f</span> — then <strong>Borsuk–Ulam</strong> finishes.</p>
+</div>
+<div style="display: flex; gap: 1.4rem; align-items: center; max-width: 95%; margin: 0.5rem auto 0.2rem;">
+<div style="flex: 0 0 45%; min-width: 0;">
+<svg viewbox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;" font-family="EB Garamond, Georgia, serif">
+  <defs>
+    <marker id="mech-ar" markerwidth="9" markerheight="9" refx="7.5" refy="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#6c1d1a"></path>
+    </marker>
+  </defs>
+  <!-- BASE: domain circle S^1 (left, solid); target circle S^1 (right, faint) -->
+  <g>
+    <circle cx="130" cy="150" r="72" fill="none" stroke="#2b211a" stroke-width="4"></circle>
+    <text x="130" y="248" fill="#2b211a" font-style="italic" font-size="19" text-anchor="middle">S¹</text>
+    <circle cx="390" cy="150" r="72" fill="none" stroke="#2b211a" stroke-width="1.6" stroke-opacity="0.3"></circle>
+    <text x="390" y="248" fill="#2b211a" fill-opacity="0.5" font-style="italic" font-size="19" text-anchor="middle">S¹</text>
+  </g>
+  <!-- STAGE 1a — the sample X = image of f (persists, f-bar runs through it) -->
+  <g class="fragment" data-fragment-index="1">
+    <g fill="#6c1d1a">
+      <circle cx="462" cy="150" r="5"></circle><circle cx="425" cy="211" r="5"></circle>
+      <circle cx="350" cy="208" r="5"></circle><circle cx="318" cy="135" r="5"></circle>
+      <circle cx="360" cy="86" r="5"></circle>
+    </g>
+    <text x="248" y="28" fill="#6c1d1a" font-style="italic" font-size="14" text-anchor="middle">f : S¹ → X</text>
+  </g>
+  <!-- STAGE 1b — the discontinuous map's arrows + image label; cleared once f-bar appears -->
+  <g class="fragment fade-in-then-out" data-fragment-index="1">
+    <g stroke="#6c1d1a" stroke-width="1" stroke-dasharray="2 3" stroke-opacity="0.55" fill="none" marker-end="url(#mech-ar)">
+      <line x1="196" y1="122" x2="348" y2="94"></line>
+      <line x1="200" y1="172" x2="344" y2="204"></line>
+    </g>
+    <text x="392" y="150" fill="#57473a" font-style="italic" font-size="12" text-anchor="middle">image = X</text>
+  </g>
+  <!-- STAGE 2a — triangulate the domain; the continuous f-bar image covers most of the circle (persists) -->
+  <g class="fragment" data-fragment-index="2">
+    <polygon points="202,150 181,99 130,78 79,99 58,150 79,201 130,222 181,201" fill="none" stroke="#c8b894" stroke-width="1.1"></polygon>
+    <g fill="#2b211a">
+      <circle cx="202" cy="150" r="2.4"></circle><circle cx="181" cy="99" r="2.4"></circle>
+      <circle cx="130" cy="78" r="2.4"></circle><circle cx="79" cy="99" r="2.4"></circle>
+      <circle cx="58" cy="150" r="2.4"></circle><circle cx="79" cy="201" r="2.4"></circle>
+      <circle cx="130" cy="222" r="2.4"></circle><circle cx="181" cy="201" r="2.4"></circle>
+    </g>
+    <text x="130" y="32" fill="#57473a" font-style="italic" font-size="13" text-anchor="middle">triangulate</text>
+    <path d="M 462 150 A 72 72 0 1 1 360 86" fill="none" stroke="#6c1d1a" stroke-width="3.6"></path>
+  </g>
+  <!-- STAGE 2b — the f-bar map arrow + labels; cleared before the antipodal step -->
+  <g class="fragment fade-in-then-out" data-fragment-index="2">
+    <line x1="210" y1="150" x2="312" y2="150" stroke="#6c1d1a" stroke-width="2.4" marker-end="url(#mech-ar)"></line>
+    <text x="261" y="137" fill="#6c1d1a" font-style="italic" font-size="18" text-anchor="middle"><tspan text-decoration="overline">f</tspan></text>
+    <text x="261" y="172" fill="#57473a" font-style="italic" font-size="12" text-anchor="middle">shortest paths</text>
+  </g>
+  <!-- STAGE 3 — the image misses an arc, so degree zero -->
+  <g class="fragment" data-fragment-index="3">
+    <path d="M 360 86 A 72 72 0 0 1 462 150" fill="none" stroke="#c8b894" stroke-width="5.5" stroke-dasharray="6 6"></path>
+    <text x="474" y="120" fill="#6c1d1a" font-style="italic" font-size="12" text-anchor="start">arc missed</text>
+    <text x="474" y="134" fill="#6c1d1a" font-style="italic" font-size="12" text-anchor="start">(deg 0)</text>
+  </g>
+  <!-- STAGE 4 — Borsuk-Ulam: antipodal x, -x share one image -->
+  <g class="fragment" data-fragment-index="4">
+    <circle cx="130" cy="78" r="6.5" fill="#2b211a"></circle>
+    <circle cx="130" cy="222" r="6.5" fill="#2b211a"></circle>
+    <text x="146" y="76" fill="#2b211a" font-style="italic" font-size="13" text-anchor="start">x</text>
+    <text x="146" y="234" fill="#2b211a" font-style="italic" font-size="13" text-anchor="start">−x</text>
+    <line x1="140" y1="83" x2="312" y2="161" stroke="#6c1d1a" stroke-width="1.5" stroke-opacity="0.8" marker-end="url(#mech-ar)"></line>
+    <line x1="140" y1="217" x2="312" y2="169" stroke="#6c1d1a" stroke-width="1.5" stroke-opacity="0.8" marker-end="url(#mech-ar)"></line>
+    <circle cx="320" cy="165" r="6.5" fill="#6c1d1a"></circle>
+    <text x="390" y="200" fill="#6c1d1a" font-style="italic" font-size="13" text-anchor="middle"><tspan text-decoration="overline">f</tspan>(x) = <tspan text-decoration="overline">f</tspan>(−x)</text>
+  </g>
+  <!-- STAGE 5 — the two shortest paths cross: a far pair lands close -->
+  <g class="fragment" data-fragment-index="5">
+    <line x1="310" y1="155" x2="332" y2="177" stroke="#6c1d1a" stroke-width="2.2"></line>
+    <line x1="310" y1="177" x2="332" y2="155" stroke="#6c1d1a" stroke-width="2.2"></line>
+    <text x="260" y="290" fill="#6c1d1a" font-weight="700" font-size="15" text-anchor="middle">large distortion</text>
+  </g>
+</svg>
+</div>
+<div style="flex: 1 1 auto; min-width: 0;">
+<div class="dispatches" data-title="The proof, step by step" style="font-size: 0.79em; padding: 0.45rem 1.1rem 0.45rem;">
+<p><span class="fragment" data-fragment-index="1"><strong>The map</strong> — a small <span class="math inline">d_{\mathrm{GH}}</span> gives <span class="math inline">f \colon S^1 \to X</span>: its image is the <em>sample</em>, not all of <span class="math inline">S^1</span>.</span></p>
+<p><span class="fragment" data-fragment-index="2"><strong>Triangulate</strong> — interpolate <span class="math inline">f</span> along shortest paths: a <em>continuous</em> <span class="math inline">\bar f \colon S^1 \to S^1</span>.</span></p>
+<p><span class="fragment" data-fragment-index="3"><strong>Miss an arc</strong> — if <span class="math inline">X</span> is sparse, <span class="math inline">\bar f</span> skips an arc, so it has <strong>degree zero</strong>.</span></p>
+<p><span class="fragment" data-fragment-index="4"><strong>Borsuk–Ulam</strong> — degree zero forces antipodal <span class="math inline">x, -x</span> with <span class="math inline">\bar f(x) = \bar f(-x)</span>.</span></p>
+<p><span class="fragment" data-fragment-index="5"><strong>Arcs cross</strong> — neighbouring shortest paths cross: a far pair lands close — <strong>large distortion</strong>.</span></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>The proof — and it really is one picture. Start from a correspondence nearly realizing the Gromov–Hausdorff distance: it gives a map <span class="math inline">f</span> from <span class="math inline">S^1</span> to the sample <span class="math inline">X</span> with small distortion, but <span class="math inline">f</span> need not be continuous. Repair it: triangulate the circle on the sample points and send each edge to the shortest path between its endpoints’ images. That yields a <em>continuous</em> self-map <span class="math inline">\bar f \colon S^1 \to S^1</span> with essentially the same distortion.</p>
+<p>Now connectedness bites. If <span class="math inline">X</span> is not dense enough, <span class="math inline">\bar f</span> misses an arc — so its degree is zero. Borsuk–Ulam for maps of the circle then guarantees a pair of <em>antipodal</em> points <span class="math inline">x</span> and <span class="math inline">-x</span> with the same image, <span class="math inline">\bar f(x) = \bar f(-x)</span>. Look locally: the two shortest paths joining the images on either side of <span class="math inline">x</span> and <span class="math inline">-x</span> are forced to cross. Wherever they cross, two points that were far apart on the circle have nearly the same image — large distortion. Contradiction.</p>
+<p>So small distortion is impossible below the <span class="math inline">\pi/3</span> ceiling: connectedness, not homology, is the obstruction. The same mechanism — triangulate, push forward, find a collapsed far pair — carries to general metric graphs.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2><span class="math inline">\pi/3</span> is optimal</h2>
+<div class="standfirst" style="font-size: 0.95em; margin: -0.3rem 0 0.3rem;">
+<p>There is an explicit <strong>six-point</strong> configuration that defeats every constant past <span class="math inline">\pi/3</span>.</p>
+</div>
+<div class="plate fragment" data-fragment-index="1" style="max-width: 890px;">
+<p><img data-src="assets/sixpoint.svg"></p>
+</div>
+<div class="def-box fragment" data-fragment-index="2" data-title="Optimality" style="margin: 1.05rem auto 0.35rem; font-size: 0.9em;">
+<p>For every <span class="math inline">\varepsilon \in (0, \tfrac{\pi}{6})</span> there is a nonempty compact <span class="math inline">X \subseteq S^1</span> with <span class="math display"> d_{\mathrm{H}}(S^1, X) = \tfrac{\pi}{3} + \varepsilon \quad\text{but}\quad d_{\mathrm{GH}}(S^1, X) = \tfrac{\pi}{3} \;&lt;\; d_{\mathrm{H}}(S^1, X). </span></p>
+</div>
+<div class="transition-line fragment fade-up" data-fragment-index="3">
+<p><em>The two distances split exactly at <span class="math inline">\pi/3</span> — the constant can’t be raised.</em> <span class="followup-stamp tilt-d"><span class="manicule">☞</span>Now, any graph</span></p>
+</div>
+<aside class="notes">
+<p>Optimality. We exhibit an explicit six-point configuration on the circle, with gaps chosen so the largest is just over <span class="math inline">2\pi/3</span> — its half, the Hausdorff distance, is <span class="math inline">\pi/3 + \varepsilon</span>. A correspondence <span class="math inline">R \subseteq S^1 \times X</span> — partitioning <span class="math inline">S^1</span> into preimage arcs, four short (<span class="math inline">\pi/6 + \varepsilon</span>) and two long (<span class="math inline">2\pi/3 - 2\varepsilon</span>) — has distortion <span class="math inline">2\pi/3</span>, so the Gromov–Hausdorff distance is at most <span class="math inline">\pi/3</span>, strictly smaller than the Hausdorff distance.</p>
+<p>So past the threshold the two distances genuinely separate: no constant larger than <span class="math inline">\pi/3</span> can appear in the theorem. The <span class="math inline">\pi/3</span> is not an artifact — it is the truth about the circle.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section class="title-slide slide level1 section-divider center">
+<h1>§ III. General Metric Graphs</h1>
+<div class="plate">
+<p><img data-src="assets/section-iv-plate.svg"></p>
+</div>
+<aside class="notes">
+<p>Section III — general metric graphs.</p>
+<p>To go from the circle to an arbitrary finite connected metric graph we need two new topological tools: a Borsuk–Ulam theorem for maps into <em>trees</em>, and a structural lemma saying that low-distortion maps preserve loops. Then comes the main theorem — which carries a leaf-control hypothesis, necessary because without it the equality can fail — an algorithmic payoff, and the open problems to close on.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>The tree case</h2>
+<div class="standfirst" style="font-size: 0.95em; margin: -0.3rem 0 0.3rem;">
+<p>The simplest metric graph is a <strong>tree</strong>. There the two distances already coincide — <em>provided the sample reaches the leaves.</em></p>
+</div>
+<div class="def-box fragment" data-fragment-index="1" data-title="Equality on trees · Thm 8" style="margin: 0.45rem auto 0.35rem; font-size: 0.88em;">
+<p>Let <span class="math inline">T</span> be a finite metric tree, <span class="math inline">X \subseteq T</span>. If the largest gap avoids the leaves — <span class="math inline">d_{\mathrm{H}}(T,X) &gt; \vec d_{\mathrm{H}}(\partial T, X)</span> — then <span class="math inline">\; d_{\mathrm{GH}}(T,X) = d_{\mathrm{H}}(T,X).</span></p>
+</div>
+<div class="plate fragment" data-fragment-index="2" style="max-width: 720px;">
+<p><img data-src="assets/trees-leaf.svg"></p>
+</div>
+<div class="dispatches fragment" data-fragment-index="3" data-title="Why the leaves need control · Thm 5" style="font-size: 0.77em; padding: 0.35rem 1.2rem 0.28rem; margin: 0.95rem auto 0.2rem;">
+<ul>
+<li>Miss the leaves and it breaks — the <strong>fan</strong> keeps <span class="math inline">d_{\mathrm{H}}</span> large while <span class="math inline">d_{\mathrm{GH}} \to 0</span> (near-equal arms interchange), so leaf control is unavoidable.</li>
+</ul>
+</div>
+<div class="transition-line fragment fade-up" data-fragment-index="4">
+<p><em>Leaves tamed — now let the graph carry loops.</em> <span class="followup-stamp tilt-a"><span class="manicule">☞</span>General graphs</span></p>
+</div>
+<aside class="notes">
+<p>The tree case. The simplest metric graph is a tree — no loops. Here the Gromov–Hausdorff distance already equals the Hausdorff distance, coefficient one, under a single condition: the sample must reach the leaves. Precisely, Theorem 8: if the Hausdorff distance exceeds the directed Hausdorff distance from the leaves to the sample — so the largest gap avoids the leaves — then the two distances are equal. The argument is pure connectedness: a low-distortion self-map of the tree would have to miss a point, and a tree minus a point is disconnected — contradiction.</p>
+<p>Why insist on the leaves? Theorem 5 shows the ratio can be made arbitrarily small otherwise. Take a fan — a wedge of intervals of nearly equal length — and sample densely near the centre but miss the tips. The Hausdorff distance stays large, because the tips are unsampled; but the Gromov–Hausdorff distance is tiny, because the near-equal arms can be permuted by a near-isometry. So leaf control is necessary, not a technicality — and it is exactly the hypothesis that carries over to general graphs.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>General graphs</h2>
+<div class="standfirst" style="font-size: 0.95em; margin: -0.3rem 0 0.3rem;">
+<p>The equality reaches <em>any</em> finite connected metric graph — under leaf control and a density set by the core — and it becomes a bound you can <strong>compute</strong>.</p>
+</div>
+<div class="def-box fragment" data-fragment-index="1" data-title="Main theorem · Thm 23" style="margin: 0.5rem auto 0.2rem; font-size: 0.95em;">
+<p>Let <span class="math inline">G</span> be a finite connected metric graph, <span class="math inline">X \subseteq G</span>. If <span class="math inline">\partial G \neq \varnothing</span>, assume leaf control <span class="math inline">d_{\mathrm{H}}(G,X) &gt; \vec d_{\mathrm{H}}(\partial G, X)</span>. If <span class="math display"> d_{\mathrm{GH}}(G,X) \;&lt;\; \frac{e(G_0)}{16}, </span> then <span class="math inline">\; d_{\mathrm{GH}}(G,X) = d_{\mathrm{H}}(G,X).</span></p>
+</div>
+<div class="fragment" data-fragment-index="1" style="text-align: center; font-size: 0.72em; color: var(--sepia); font-style: italic; margin: 0 auto 0.45rem;">
+<p>core <span class="math inline">G_0</span> — the loops, with the hanging trees pruned · <span class="math inline">e(G_0)</span> — its shortest edge</p>
+</div>
+<div class="def-box fragment" data-fragment-index="2" data-title="The payoff · a computable lower bound" style="margin: 0.45rem auto 0.35rem; font-size: 0.88em;">
+<p>For two dense samples <span class="math inline">X, Y \subseteq G</span>, the triangle inequality turns the equality into a lower bound on <span class="math inline">d_{\mathrm{GH}}(X, Y)</span> — phrased through <span class="math inline">d_{\mathrm{H}}(X, Y)</span>, which is <span class="math inline">\mathcal{O}(n^2)</span>-computable. An otherwise NP-hard distance gains a quantitative, polynomial-time estimate.</p>
+</div>
+<div class="transition-line fragment fade-up" data-fragment-index="3">
+<p><em>Theory becomes algorithm — a concrete case is worked out in the paper.</em> <span class="followup-stamp tilt-c"><span class="manicule">☞</span>What’s still open</span></p>
+</div>
+<aside class="notes">
+<p>General graphs — the main theorem, Theorem 23. The leaf-control hypothesis is exactly the tree condition from before: if <span class="math inline">G</span> has leaves, the largest sampling gaps must avoid them. The new ingredient is loops, handled by a density requirement: the Gromov–Hausdorff distance must be below <span class="math inline">e(G_0)/16</span>, where <span class="math inline">G_0</span> is the core — the loops, with the hanging trees pruned — and <span class="math inline">e(G_0)</span> its shortest edge. So the density you need is dictated by the finest loop, not the whole graph. Under leaf control and this density, the two distances are equal on any finite connected metric graph.</p>
+<p>The payoff is algorithmic. The theorem compares a graph to one sample, but via the triangle inequality it also compares <em>two</em> dense samples <span class="math inline">X</span> and <span class="math inline">Y</span>: it lower-bounds the Gromov–Hausdorff distance between them through the Hausdorff distance between them, which is quadratic-time computable. So a distance that is NP-hard even to approximate gains a quantitative, polynomial-time lower bound on dense samples — the theory becomes an algorithm. We carry out a concrete case explicitly in the paper.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2">
+<h2>What’s still open</h2>
+<div class="standfirst" style="font-size: 0.95em; margin: -0.3rem 0 0.3rem;">
+<p>Four questions for the bench — sharpness, generality, boundary, and beyond graphs.</p>
+</div>
+<div class="dispatches fragment" data-title="Open problems" style="font-size: 0.78em; padding: 0.5rem 1.2rem 0.4rem; margin: 0.5rem auto 0.4rem;">
+<ul>
+<li class="fragment"><strong>Sharpness</strong> — is the density constant <span class="math inline">e(G_0)/16</span> optimal, or can it be pushed?</li>
+<li class="fragment"><strong>Generality</strong> — do the results extend to general geodesic / length spaces, and under what density?</li>
+<li class="fragment"><strong>Boundary</strong> — are there versions for manifolds <em>with boundary</em>?</li>
+<li class="fragment"><strong>Beyond graphs</strong> — which other classes of spaces satisfy space-vs-sample <span class="math inline">d_{\mathrm{GH}} = d_{\mathrm{H}}</span>?</li>
+</ul>
+</div>
+<div class="transition-line fragment fade-up">
+<p><em>The thread: connectedness, not homology, lower-bounds the distance.</em> <span class="followup-stamp tilt-b"><span class="manicule">☞</span>Thank you</span></p>
+</div>
+<aside class="notes">
+<p>Four open problems, good for this audience.</p>
+<p>One: is <span class="math inline">e(G_0)/16</span> the optimal density constant? We do not know it is sharp — the circle’s <span class="math inline">\pi/3</span> is sharp, but the general graph constant may have slack.</p>
+<p>Two: do these results extend to general geodesic or length spaces, and under what density hypothesis?</p>
+<p>Three: are there versions for manifolds with boundary, where the leaf-control idea becomes a boundary-control idea?</p>
+<p>Four: which other classes of metric spaces enjoy the property that the Gromov–Hausdorff distance to a dense sample equals the Hausdorff distance?</p>
+<p>The unifying thread is the message of the whole talk: connectedness — not homology — is what lower-bounds the distance.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2 colophon">
+<h2>Thank you</h2>
+<div class="finis">F  I  N  I  S</div>
+<svg class="wax-seal" viewbox="0 0 80 80" role="img" aria-label="Author's seal">
+  <defs>
+    <style>
+      .seal-ring  { stroke: currentColor; fill: none; stroke-width: 1.3; }
+      .seal-inner { stroke: currentColor; fill: none; stroke-width: 0.45; }
+      .seal-mark  { fill: currentColor; stroke: none; }
+      .seal-thin  { stroke: currentColor; fill: none; stroke-width: 0.55; }
+      .seal-mono  { font-family: 'Noto Serif Bengali', 'Bengali Sangam MN', 'Kalpurush', 'Vrinda', 'Lohit Bengali', serif; font-weight: 700; font-size: 12px; fill: currentColor; }
+      .seal-band  { font-family: 'Alegreya SC', 'EB Garamond', Georgia, serif; font-size: 4.6px; letter-spacing: 0.22em; fill: currentColor; }
+    </style>
+    <path id="seal-top" d="M 11 40 A 29 29 0 0 1 69 40"></path>
+    <path id="seal-bottom" d="M 11 40 A 29 29 0 0 0 69 40"></path>
+  </defs>
+  <circle class="seal-ring" cx="40" cy="40" r="36"></circle>
+  <circle class="seal-inner" cx="40" cy="40" r="33"></circle>
+  <circle class="seal-inner" cx="40" cy="40" r="22"></circle>
+  <text class="seal-band">
+    <textpath href="#seal-top" startoffset="50%" text-anchor="middle">SVSHOVAN  MAJHI</textpath>
+  </text>
+  <text class="seal-band">
+    <textpath href="#seal-bottom" startoffset="50%" text-anchor="middle">·  ANNO  MMXXVI  ·</textpath>
+  </text>
+  <g>
+    <polygon class="seal-mark" opacity="0.16" points="35,33 40,24 40,41"></polygon>
+    <polygon class="seal-mark" opacity="0.16" points="40,24 45,33 40,41"></polygon>
+    <line class="seal-thin" x1="35" y1="33" x2="40" y2="24"></line>
+    <line class="seal-thin" x1="40" y1="24" x2="45" y2="33"></line>
+    <line class="seal-thin" x1="35" y1="33" x2="40" y2="41"></line>
+    <line class="seal-thin" x1="45" y1="33" x2="40" y2="41"></line>
+    <line class="seal-thin" x1="40" y1="24" x2="40" y2="41"></line>
+    <line class="seal-thin" x1="35" y1="33" x2="45" y2="33"></line>
+    <circle class="seal-mark" cx="35" cy="33" r="0.95"></circle>
+    <circle class="seal-mark" cx="40" cy="24" r="0.95"></circle>
+    <circle class="seal-mark" cx="45" cy="33" r="0.95"></circle>
+    <circle class="seal-mark" cx="40" cy="41" r="0.95"></circle>
+  </g>
+  <text class="seal-mono" x="40" y="51" text-anchor="middle">সুশোভন</text>
+  <g class="seal-mark">
+    <circle cx="40" cy="56" r="0.6"></circle>
+    <circle cx="37" cy="59" r="0.6"></circle>
+    <circle cx="43" cy="59" r="0.6"></circle>
+  </g>
+  <circle class="seal-mark" cx="9" cy="40" r="0.95"></circle>
+  <circle class="seal-mark" cx="71" cy="40" r="0.95"></circle>
+  <g class="seal-mark">
+    <circle cx="14" cy="14" r="0.55"></circle>
+    <circle cx="66" cy="14" r="0.55"></circle>
+    <circle cx="14" cy="66" r="0.55"></circle>
+    <circle cx="66" cy="66" r="0.55"></circle>
+  </g>
+</svg>
+<div class="contact">
+<p><a href="https://arxiv.org/abs/2411.09182">arXiv:2411.09182</a> · <a href="https://smajhi.com">smajhi.com</a> · <a href="mailto:s.majhi@email.gwu.edu">s.majhi@email.gwu.edu</a></p>
+</div>
+<div class="subscription">
+<p><em>With thanks to</em> Henry Adams, Fedor Manin, Žiga Virk, Nicolò Zava. SoCG 2026 · June 2026.</p>
+</div>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Gromov–Hausdorff in Metric Graphs · S. Majhi · SoCG 2026 · New Brunswick, NJ</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: false,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'slow',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+
+        maxScale: 2,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    <script src="assets/inject-landmark.js" defer=""></script>
+    
+
+</body></html>
